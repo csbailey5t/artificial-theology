@@ -23,12 +23,12 @@ draft_thology = tasks.draft_task(theologian_agent, topic)
 # will need to update to make sure that the draft from the first tasks is passed to the bible agent
 add_scripture = tasks.scripture_task(bible_agent, topic)
 # make it more lutheran
-add_luther = tasks.luther_task(lutheran_agent, topic)
+synthesize_theology = tasks.synthesis_task()(lutheran_agent, topic)
 
 # Create Crew
 crew = Crew(
     agents=[theologian_agent, bible_agent, lutheran_agent],
-    tasks=[draft_thology, add_scripture, add_luther],
+    tasks=[draft_thology, add_scripture, synthesize_theology],
     verbose=True,
 )
 
